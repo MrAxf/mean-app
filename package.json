@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node ./server/bin/www",
-    "dev": "set DEBUG=myapp:* & nodemon ./server/bin/www"
+    "dev": "concurrently --kill-others \"npm run watch\" \"set DEBUG=myapp:* & nodemon ./server/bin/www\"",
+    "build": "node-sass ./client/scss/custom.scss ./public/css/style.css",
+    "watch": "node-sass -w ./client/scss/custom.scss ./public/css/style.css"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
@@ -15,6 +18,8 @@
     "morgan": "~1.9.0"
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
+    "node-sass": "^4.8.3",
     "nodemon": "^1.17.2"
   }
 }
