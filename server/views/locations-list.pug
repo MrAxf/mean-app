@@ -1,0 +1,30 @@
+extends layout
+
+include _includes/sharedHTMLfunctions
+
+block content
+  #banner.page-header
+    .row
+      .col-12
+        h1.mt-2 Loc8r
+         small.text-muted &nbsp;#{pageHeader.strapline}
+        hr
+  
+  .row
+    .col-12.col-sm-8
+      .row.list-group
+        each location in locations
+          .col-12.list-group-item.bg-primary
+            h4
+              a(href="/location")= location.name
+              small &nbsp;
+              +outputRating(location.rating)
+              span.badge.badge-pill.float-right.badge-danger= location.distance
+            p.address= location.address
+            p
+              each facility in location.facilities
+                span.badge.badge-warning= facility
+                | &nbsp;
+    .col-12.col-sm-4 
+      p.lead= sidebar
+

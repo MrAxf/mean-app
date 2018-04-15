@@ -1,0 +1,5 @@
+mixin outputRating(rating)
+  - for (var i = 1; i <= rating; i++)
+    i.material-icons.md-18 star
+  - for (i = rating; i < 5; i++)
+    i.material-icons.md-18 star_border
