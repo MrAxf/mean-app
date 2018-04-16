@@ -5,7 +5,7 @@ include _includes/sharedHTMLfunctions
 block content
   .row.page-header
     .col-lg-12
-      h1.mt-2 Starcups
+      h1.mt-2= pageHeader.title
       hr
 
   .row
@@ -13,37 +13,29 @@ block content
       .row
         .col-12.col-sm-6
           p.rating
-            +outputRating(3)
-          p 125 High Street, Reading, RG6 1PS
+            +outputRating(location.rating)
+          p= location.address
           .card.bg-primary.mb-3
             .card-header.bg-danger
               h3.card-title.mb-0 Opening hours
             .card-body
-              p.mb-1 Monday - Friday : 7:00am - 7:00pm
-              p.mb-1 Saturday : 8:00am - 5:00pm
-              p.mb-1 Sunday : closed
+              each time in location.openingTimes
+                p.mb-1 #{time.days} : #{time.closed ? "closed" : `${time.opening} - ${time.closing}`}
           .card.bg-primary.mb-3
             .card-header.bg-danger
               h3.card-title.mb-0 Facilities
             .card-body
-              span.badge.badge-warning.text-white
-                i.material-icons.md-12 check
-                | &nbsp;Hot drinks
-              | &nbsp;
-              span.badge.badge-warning.text-white
-                i.material-icons.md-12 check
-                | &nbsp;Food
-              | &nbsp;
-              span.badge.badge-warning.text-white
-                i.material-icons.md-12 check
-                | &nbsp;Premium wifi
-              | &nbsp;
+              each facility in location.facilities
+                span.badge.badge-warning.text-white
+                  i.material-icons.md-12 check
+                  | &nbsp;#{facility}
+                | &nbsp;
         .col-12.col-sm-6.location-map
           .card.bg-primary.mb-3
             .card-header.bg-danger
               h3.card-title.mb-0 Location map
             .card-body
-              img.img-fluid.rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2')
+              img.img-fluid.rounded(src=`http://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.lng}&zoom=17&size=400x350&sensor=false&markers=${location.lat},${location.lng}&scale=2`)
       .row
         .col-12
           .card.bg-primary.review-panel
@@ -51,20 +43,14 @@ block content
               a.btn.btn-secondary.float-right(href='/location/review/new') Add review
               h3.card-title.mb-0 Customer reviews
             ul.list-group.list-group-flush
-              li.list-group-item.bg-primary-dark.py-2
-                span.rating
-                  +outputRating(5)
-                  span.reviewAuthor Simon Holmes
-                  small.reviewTimestamp 16 July 2013
-              li.list-group-item.bg-primary
-                p.mb-0.mt-3 What a great place. I can't say enough good things about it.
-              li.list-group-item.bg-primary-dark.py-2
-                span.rating
-                  +outputRating(3)
-                  span.reviewAuthor Charlie Chaplin
-                  small.reviewTimestamp 16 June 2013
-              li.list-group-item.bg-primary
-                p.mb-0.mt-3 It was okay. Coffee wasn't great, but the wifi was fast.
+              each review in location.reviews
+                li.list-group-item.bg-primary-dark.py-2
+                  span.rating
+                    +outputRating(review.rating)
+                    span.reviewAuthor= review.author
+                    small.reviewTimestamp= review.timestamp
+                li.list-group-item.bg-primary
+                  p.mb-0.mt-3= review.reviewText
     .col-12.col-md-3
-      p.lead Simon's cafe is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.
-      p If you've been and you like it - or if you don't - please leave a review to help other people just like you.
+      p.lead= sidebar.context
+      p= sidebar.callToAction
