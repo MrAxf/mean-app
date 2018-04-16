@@ -50,25 +50,21 @@ block content
             .card-header.bg-danger
               a.btn.btn-secondary.float-right(href='/location/review/new') Add review
               h3.card-title.mb-0 Customer reviews
-            .card-body.review-container
-              .row
-                .review.col-12
-                  .col-12.well.well-sm.review-header.bg-primary-dark.mb-3
-                    span.rating
-                      +outputRating(5)
-                      span.reviewAuthor Simon Holmes
-                      small.reviewTimestamp 16 July 2013
-                  .col-12
-                    p What a great place. I can't say enough good things about it.
-              .row
-                .review.col-12
-                  .col-12.well.well-sm.review-header.bg-primary-dark.mb-3
-                    span.rating
-                      +outputRating(3)
-                      span.reviewAuthor Charlie Chaplin
-                      small.reviewTimestamp 16 June 2013
-                  .col-12
-                    p It was okay. Coffee wasn't great, but the wifi was fast.
+            ul.list-group.list-group-flush
+              li.list-group-item.bg-primary-dark.py-2
+                span.rating
+                  +outputRating(5)
+                  span.reviewAuthor Simon Holmes
+                  small.reviewTimestamp 16 July 2013
+              li.list-group-item.bg-primary
+                p.mb-0.mt-3 What a great place. I can't say enough good things about it.
+              li.list-group-item.bg-primary-dark.py-2
+                span.rating
+                  +outputRating(3)
+                  span.reviewAuthor Charlie Chaplin
+                  small.reviewTimestamp 16 June 2013
+              li.list-group-item.bg-primary
+                p.mb-0.mt-3 It was okay. Coffee wasn't great, but the wifi was fast.
     .col-12.col-md-3
       p.lead Simon's cafe is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.
       p If you've been and you like it - or if you don't - please leave a review to help other people just like you.

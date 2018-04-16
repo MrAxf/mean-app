@@ -1,21 +1,37 @@
-@import "_custom-vars";
+@import "custom-vars";
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
 @import "https://fonts.googleapis.com/icon?family=Material+Icons|Lobster|Cabin";
 
 .material-icons{
-  &.md-12 { font-size: 12px; }
-  &.md-18 { font-size: 18px; }
-  &.md-24 { font-size: 24px; }
-  &.md-36 { font-size: 36px; }
-  &.md-48 { font-size: 48px; }
+  @each $size in (12, 18, 24, 36, 48) { &.md-#{$size} { font-size: #{$size}px; } }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lobster', cursive;
+@for $i from 1 through 6 { h#{$i} { font-family: 'Lobster', cursive; } }
+
+.text-muted { color: map-get($theme-colors, "secondary") !important; }
+
+a{
+  color: #e8d069;
+  &:hover { color: map-get($theme-colors, "warning"); }
 }
 
-.text-muted{
-  color: #bbb !important;
+.navbar{
+  padding: 0;
+  .navbar-brand { margin: 0.5rem 1rem; }
+  .navbar-toggler {
+    margin-top: 0.5 rem;
+    margin-bottom: 0.5 rem;
+    margin-right: 1rem;
+    color: white !important;
+    border-color: white !important;
+  }
+  .nav-link {
+    padding: 0.5rem 1.2rem;
+    color: white !important;
+    &:hover{
+      background-color: map-get($theme-colors, "danger-light");
+    }
+  }
 }

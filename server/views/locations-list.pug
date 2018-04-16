@@ -17,13 +17,13 @@ block content
           .col-12.list-group-item.bg-primary
             h4
               a(href="/location")= location.name
-              small &nbsp;
-              +outputRating(location.rating)
+              small.text-secondary &nbsp;
+                +outputRating(location.rating)
               span.badge.badge-pill.float-right.badge-danger= location.distance
             p.address= location.address
             p
               each facility in location.facilities
-                span.badge.badge-warning= facility
+                span.badge.badge-warning.text-white= facility
                 | &nbsp;
     .col-12.col-sm-4 
       p.lead= sidebar
