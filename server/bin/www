@@ -5,6 +5,7 @@
  */
 
 const app = require('../../app');
+const mongoose = require('mongoose');
 const debug = require('debug')('mean:server');
 const http = require('http');
 
@@ -74,6 +75,15 @@ function onListening() {
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+
+/**
+ * Connect to database
+ */
+
+const mongoURI = process.env.MONGOURI || 'mongodb://localhost/loc8r';
+mongoose.connect(mongoURI)
+  .then(() => console.log("Conected to MongoDB"))
+  .catch(err => console.log(err.message));
 
 /**
  * Create HTTP server.

@@ -19,7 +19,7 @@ a{
 
 .navbar{
   padding: 0;
-  .navbar-brand { margin: 0.5rem 1rem; }
+  .navbar-brand { margin: 0.5rem 1rem 0.5rem 0; }
   .navbar-toggler {
     margin-top: 0.5 rem;
     margin-bottom: 0.5 rem;
@@ -28,7 +28,7 @@ a{
     border-color: white !important;
   }
   .nav-link {
-    padding: 0.5rem 1.2rem;
+    padding: 1.2rem 0.5rem !important;
     color: white !important;
     &:hover{
       background-color: map-get($theme-colors, "danger-light");
