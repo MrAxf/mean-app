@@ -4,7 +4,7 @@ const { homeList, locationInfo, addReview } = require('../controllers/locations'
 
 /* GET home page. */
 router.get('/', homeList);
-router.get('/location', locationInfo);
+router.get('/location/:id', locationInfo);
 router.get('/location/review/new', addReview);
 
 router.get('/about', about);

@@ -35,7 +35,7 @@ block content
             .card-header.bg-danger
               h3.card-title.mb-0 Location map
             .card-body
-              img.img-fluid.rounded(src=`http://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.lng}&zoom=17&size=400x350&sensor=false&markers=${location.lat},${location.lng}&scale=2`)
+              img.img-fluid.rounded(src=`http://maps.googleapis.com/maps/api/staticmap?center=${location.coords[1]},${location.coords[0]}&zoom=17&size=400x350&sensor=false&markers=${location.coords[1]},${location.coords[0]}&scale=2`)
       .row
         .col-12
           .card.bg-primary.review-panel
