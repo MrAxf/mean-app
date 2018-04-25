@@ -82,7 +82,7 @@ app.set('port', port);
 
 const mongoURI = process.env.MONGOURI || 'mongodb://localhost/loc8r';
 mongoose.connect(mongoURI)
-  .then(() => console.log("Conected to MongoDB"))
+  .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.log(err.message));
 
 /**
